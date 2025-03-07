@@ -1,0 +1,9 @@
+
+
+nix run home-manager#home-manager -- switch --flake .
+
+# not using this to manage shell yet.
+
+source ~/.nix-profile/etc/profile.d/hm-session-vars.sh
+
+
