@@ -7,3 +7,10 @@ nix run home-manager#home-manager -- switch --flake .
 source ~/.nix-profile/etc/profile.d/hm-session-vars.sh
 
 
+#### 
+
+nix build .#my-font
+
+cp ./result/share/fonts/truetype/NerdFonts/DejaVuSansM/*.ttf /Library/Fonts/
+
+

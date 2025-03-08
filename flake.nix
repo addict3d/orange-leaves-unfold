@@ -26,5 +26,7 @@
         # Optionally use extraSpecialArgs
         # to pass through arguments to home.nix
       };
+
+      packages."${system}".my-font = pkgs.nerd-fonts.dejavu-sans-mono;
     };
 }
