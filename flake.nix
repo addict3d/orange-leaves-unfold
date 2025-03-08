@@ -1,3 +1,4 @@
+# vim: set ts=2 sts=2 sw=2 et :
 {
   description = "Home Manager configuration of nick";
 
