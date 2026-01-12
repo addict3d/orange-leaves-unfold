@@ -24,4 +24,4 @@ and
 #### People's Configs
 
 - https://github.com/reckenrode/nixos-configs/
-
+- https://gist.github.com/jmatsushita/5c50ef14b4b96cb24ae5268dab613050
