@@ -21,4 +21,7 @@
     jq
     ripgrep
   ];
+
+  programs.direnv.enable = true;
+
 }
