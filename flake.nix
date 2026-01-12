@@ -82,12 +82,19 @@
 
               description = "Nick Bathum";
 
+              # user already exists, so run this too:
+              # `chsh -s /run/current-system/sw/bin/bash`
+              shell = pkgs.bashInteractive;
+
               # See the reference docs for more on user config:
               # https://nix-darwin.github.io/nix-darwin/manual/#opt-users.users
             };
 
             # Other configuration parameters
             # See here: https://nix-darwin.github.io/nix-darwin/manual
+
+            # Allow `chsh` to be happy with bash
+            environment.shells = [ pkgs.bashInteractive ];
           };
 
         # Nix configuration
