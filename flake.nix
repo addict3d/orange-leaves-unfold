@@ -4,8 +4,14 @@
   # Flake inputs
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
+
+    # system-level stuff
     nix-darwin.url = "github:nix-darwin/nix-darwin/master";
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
+
+    # user-level stuff
+    home-manager-unstable.url = "github:nix-community/home-manager";
+    home-manager-unstable.inputs.nixpkgs.follows = "nixpkgs";
 
     # Determinate 3.* module
     determinate.url = "https://flakehub.com/f/DeterminateSystems/determinate/3";
@@ -41,8 +47,7 @@
           self.darwinModules.base
           self.darwinModules.nixConfig
 
-          # Apply any other imported modules here
-          ./configuration.nix
+          ./darwin/red-Maple.nix
 
           # In addition to adding modules in the style above, you can also
           # add modules inline like this. Delete this if unnecessary.
