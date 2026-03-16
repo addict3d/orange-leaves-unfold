@@ -52,13 +52,12 @@
         let
           pkgs = import inputs.nixpkgs { inherit system; };
         in
-      inputs.home-manager-unstable.lib.homeManagerConfiguration {
-        inherit pkgs;
-        modules = [
-          ./home/nick.nix
-        ];
-      };
-
+        inputs.home-manager-unstable.lib.homeManagerConfiguration {
+          inherit pkgs;
+          modules = [
+            ./home/nick.nix
+          ];
+        };
 
       #
       # ₍^. .^₎⟆
@@ -87,8 +86,9 @@
             }:
             {
               # Inline nix-darwin configuration
-              system.activationScripts.home-manager.text =
-                "${self.homeConfigurations."${username}@${hostname}".activationPackage}/activate";
+              system.activationScripts.home-manager.text = "${
+                self.homeConfigurations."${username}@${hostname}".activationPackage
+              }/activate";
             }
           )
         ];
