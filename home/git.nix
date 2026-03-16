@@ -8,10 +8,12 @@
 
     lfs.enable = true;
 
-    userName = "Nick Bathum";
-    userEmail = "nickbathum@gmail.com";
+    settings = {
+      user = {
+        email = "nickbathum@gmail.com";
+        name = "Nick Bathum";
+      };
 
-    extraConfig = {
       init.defaultBranch = "main";
       push.autoSetupRemote = true;
 
