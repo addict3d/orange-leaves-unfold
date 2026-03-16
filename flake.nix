@@ -128,7 +128,10 @@
             # See here: https://nix-darwin.github.io/nix-darwin/manual
 
             # Allow `chsh` to be happy with bash
-            environment.shells = [ pkgs.bashInteractive ];
+            environment.shells = with pkgs; [
+              bashInteractive
+              nushell
+            ];
           };
 
         # Nix configuration
