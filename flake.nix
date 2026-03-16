@@ -1,23 +1,21 @@
 {
-  description = "my macOS system flake with nix-darwin and Determinate Nix";
+  description = "nick's macOS cfg";
 
-  # Flake inputs
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
 
-    # system-level stuff
+    # system-level
     nix-darwin.url = "github:nix-darwin/nix-darwin/master";
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
 
-    # user-level stuff
-    home-manager-unstable.url = "github:nix-community/home-manager";
-    home-manager-unstable.inputs.nixpkgs.follows = "nixpkgs";
-
     # Determinate 3.* module
     determinate.url = "https://flakehub.com/f/DeterminateSystems/determinate/3";
+
+    # user-level
+    home-manager-unstable.url = "github:nix-community/home-manager";
+    home-manager-unstable.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  # Flake outputs
   outputs =
     { self, ... }@inputs:
     let
@@ -37,7 +35,36 @@
       hostname = "Acer-rubrum";
     in
     {
-      # nix-darwin configuration output
+
+      #      ....           ....           ....           ....
+      #     ||             ||             ||             ||
+      # /"""l|\        /"""l|\        /"""l|\        /"""l|\
+      #/_______\      /_______\      /_______\      /_______\
+      #|  .-.  |------|  .-.  |------|  .-.  |------|  .-.  |------
+      # __|L|__| .--. |__|L|__| .--. |__|L|__| .--. |__|L|__| .--.
+      #_\  \\p__`o-o'__\  \\p__`o-o'__\  \\p__`o-o'__\  \\p__`o-o'_
+      #------------------------------------------------------------
+      #------------------------------------------------------------
+      #
+      # User configuration
+      #
+      homeConfigurations."${username}@${hostname}" =
+        let
+          pkgs = import inputs.nixpkgs { inherit system; };
+        in
+      inputs.home-manager-unstable.lib.homeManagerConfiguration {
+        inherit pkgs;
+        modules = [
+          ./home/nick.nix
+        ];
+      };
+
+
+      #
+      # ₍^. .^₎⟆
+      #
+      # System configuration
+      #
       darwinConfigurations."${hostname}" = inputs.nix-darwin.lib.darwinSystem {
         inherit system;
         modules = [
