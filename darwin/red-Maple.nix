@@ -9,6 +9,10 @@
 }:
 
 {
+  imports = [
+    ./system-fonts.nix
+  ];
+
   networking = {
     computerName = "Acer rubrum"; # scutil --get ComputerName --- emoji?
     hostName = "Acer-rubrum"; # scutil --get HostName
