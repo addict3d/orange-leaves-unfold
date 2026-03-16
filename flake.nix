@@ -87,6 +87,8 @@
             }:
             {
               # Inline nix-darwin configuration
+              system.activationScripts.home-manager.text =
+                "${self.homeConfigurations."${username}@${hostname}".activationPackage}/activate";
             }
           )
         ];
