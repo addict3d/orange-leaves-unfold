@@ -14,6 +14,9 @@
     # user-level
     home-manager-unstable.url = "github:nix-community/home-manager";
     home-manager-unstable.inputs.nixpkgs.follows = "nixpkgs";
+
+    nvim.url = "git+file:///Users/nick/Documents/projects/kickstart-nix.nvim";
+    nvim.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs =
@@ -54,6 +57,9 @@
         in
         inputs.home-manager-unstable.lib.homeManagerConfiguration {
           inherit pkgs;
+          extraSpecialArgs = {
+            inherit inputs;
+          };
           modules = [
             ./home/nick.nix
           ];
